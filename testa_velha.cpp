@@ -14,13 +14,22 @@ TEST_CASE("Jogo vazio retorna indefinido", "[CheckTicTacToeResult]") {
 }
 
 TEST_CASE("Vitória de X na primeira linha") {
-    int tabuleiro[3][3] = {
+    int hash[3][3] = {
         {1, 1, 1},
         {0, 2, 0},
         {2, 0, 2}
     };
 
-    REQUIRE(CheckTicTacToeResult(tabuleiro) == 1);
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
 }
 
 
+TEST_CASE("Vitória de O na primeira linha") {
+    int hash[3][3] = {
+        {2, 2, 2},
+        {1, 0, 1},
+        {0, 1, 0}
+    };
+
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
