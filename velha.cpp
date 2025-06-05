@@ -11,6 +11,7 @@ int CheckTicTacToeResult(int hash[3][3]) {
     for (int j = 0; j < 3; ++j) {
     if (hash[0][j] == hash[1][j] && hash[1][j] == hash[2][j] && hash[0][j] != 0) {
         if (hash[0][j] == 1) return 1; // X venceu
+        if (hash[0][j] == 2) return 2; // O venceu
     }
 }
 
