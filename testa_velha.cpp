@@ -53,3 +53,21 @@ TEST_CASE("Vitória de O na primeira linha") {
 
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
+
+TEST_CASE("Vitória de O na linha 1") {
+    int hash[3][3] = {
+        {1, 0, 0},
+        {2, 2, 2},
+        {0, 1, 1}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
+
+TEST_CASE("Vitória de O na linha 2") {
+    int hash[3][3] = {
+        {1, 0, 0},
+        {0, 1, 0},
+        {2, 2, 2}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
