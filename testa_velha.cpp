@@ -80,3 +80,12 @@ TEST_CASE("Vitória de X na primeira coluna") {
     };
     REQUIRE(CheckTicTacToeResult(hash) == 1);
 }
+
+TEST_CASE("Vitória de O na primeira coluna") {
+    int hash[3][3] = {
+        {2, 0, 1},
+        {2, 1, 0},
+        {2, 0, 1}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
