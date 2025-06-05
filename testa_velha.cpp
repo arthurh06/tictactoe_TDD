@@ -54,7 +54,7 @@ TEST_CASE("Vitória de O na primeira linha") {
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
 
-TEST_CASE("Vitória de O na linha 1") {
+TEST_CASE("Vitória de O na segunda linha") {
     int hash[3][3] = {
         {1, 0, 0},
         {2, 2, 2},
@@ -63,11 +63,20 @@ TEST_CASE("Vitória de O na linha 1") {
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
 
-TEST_CASE("Vitória de O na linha 2") {
+TEST_CASE("Vitória de O na terceira linha") {
     int hash[3][3] = {
         {1, 0, 0},
         {0, 1, 0},
         {2, 2, 2}
     };
     REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
+
+TEST_CASE("Vitória de X na primeira coluna") {
+    int hash[3][3] = {
+        {1, 0, 2},
+        {1, 2, 0},
+        {1, 0, 2}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
 }
