@@ -12,3 +12,15 @@ TEST_CASE("Jogo vazio retorna indefinido", "[CheckTicTacToeResult]") {
 
     REQUIRE(CheckTicTacToeResult(hash) == GameResult::UNDEFINED);
 }
+
+TEST_CASE("Vitória de X na primeira linha") {
+    int tabuleiro[3][3] = {
+        {1, 1, 1},
+        {0, 2, 0},
+        {2, 0, 2}
+    };
+
+    REQUIRE(CheckTicTacToeResult(tabuleiro) == 1);
+}
+
+
