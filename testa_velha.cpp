@@ -219,3 +219,14 @@ TEST_CASE("Todas as posições são X", "[CheckTicTacToeResult]") {
 
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 }
+
+TEST_CASE("Todas as posições são 0", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {2, 2, 2},
+        {2, 2, 2},
+        {2, 2, 2}
+    };
+
+    REQUIRE(CheckTicTacToeResult(hash) == -2);
+}
+
