@@ -17,10 +17,12 @@ int CheckTicTacToeResult(int hash[3][3]) {
 
     if (hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2] && hash[0][0] != 0) {
         if (hash[0][0] == 1) return 1;
+        if (hash[0][0] == 2) return 2;
 
 }
     if (hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0] && hash[0][2] != 0) {
         if (hash[0][2] == 1) return 1;
+        if (hash[0][0] == 2) return 2;
    
 }
 
