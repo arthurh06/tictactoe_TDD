@@ -26,6 +26,21 @@ int CheckTicTacToeResult(int hash[3][3]) {
    
 }
 
+    bool espacoVazio = false;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            if (hash[i][j] == 0) {
+                espacoVazio = true;
+                break;
+            }
+        }
+        if (espacoVazio) break;
+    }
+
+    if (!espacoVazio) {
+        return 0;
+    }
+
     return -1; 
 
 
