@@ -1,47 +1,48 @@
 #include "velha.hpp"
 
 int CheckTicTacToeResult(int hash[3][3]) {
-    for (int i = 0; i < 3; ++i) {
-    if (hash[i][0] == hash[i][1] && hash[i][1] == hash[i][2]) {
-        if (hash[i][0] == 1) return 1; // X venceu
-        if (hash[i][0] == 2) return 2; // O venceu
+    bool xWon = false, oWon = false;
+
+    // Verifica linhas
+    for (int i = 0; i < 3; i++) {
+        if (hash[i][0] == hash[i][1] && hash[i][1] == hash[i][2]) {
+            if (hash[i][0] == 1) xWon = true;
+            else if (hash[i][0] == 2) oWon = true;
+        }
     }
-}
 
-    for (int j = 0; j < 3; ++j) {
-    if (hash[0][j] == hash[1][j] && hash[1][j] == hash[2][j] && hash[0][j] != 0) {
-        if (hash[0][j] == 1) return 1; // X venceu
-        if (hash[0][j] == 2) return 2; // O venceu
+    // Verifica colunas
+    for (int j = 0; j < 3; j++) {
+        if (hash[0][j] == hash[1][j] && hash[1][j] == hash[2][j]) {
+            if (hash[0][j] == 1) xWon = true;
+            else if (hash[0][j] == 2) oWon = true;
+        }
     }
-}
 
-    if (hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2] && hash[0][0] != 0) {
-        if (hash[0][0] == 1) return 1;
-        if (hash[0][0] == 2) return 2;
+    // Verifica diagonais
+    if (hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]) {
+        if (hash[0][0] == 1) xWon = true;
+        else if (hash[0][0] == 2) oWon = true;
+    }
+    if (hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0]) {
+        if (hash[0][2] == 1) xWon = true;
+        else if (hash[0][2] == 2) oWon = true;
+    }
 
-}
-    if (hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0] && hash[0][2] != 0) {
-        if (hash[0][2] == 1) return 1;
-        if (hash[0][2] == 2) return 2;
-   
-}
-
-    bool espacoVazio = false;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
+    // Verifica empate ou jogo em andamento
+    bool hasEmptySpace = false;
+    for (int i = 0; i < 3 && !hasEmptySpace; i++) {
+        for (int j = 0; j < 3; j++) {
             if (hash[i][j] == 0) {
-                espacoVazio = true;
+                hasEmptySpace = true;
                 break;
             }
         }
-        if (espacoVazio) break;
     }
 
-    if (!espacoVazio) {
-        return 0;
-    }
-
-    return -1; 
-
-
+    if (xWon && oWon) return -2;  // Ambos venceram (inválido)
+    if (xWon) return 1;           // X venceu
+    if (oWon) return 2;           // O venceu
+    if (!hasEmptySpace) return 0; // Empate
+    return -1;                    // Jogo em andamento
 }
