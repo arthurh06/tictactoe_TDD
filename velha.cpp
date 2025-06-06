@@ -42,6 +42,7 @@ int CheckTicTacToeResult(int hash[3][3]) {
     if ((xCount - oCount > 1) || (oCount - xCount > 1)) {
         return -2; // Jogo impossível (diferença de peças > 1)
     }
+    
     // Verifica empate ou jogo em andamento
     bool hasEmptySpace = false;
     for (int i = 0; i < 3 && !hasEmptySpace; i++) {
@@ -58,7 +59,6 @@ int CheckTicTacToeResult(int hash[3][3]) {
     if (oCount == 9) return -2;   // Todas as posições = O
     if (xWon) return (xCount >= oCount) ? 1 : -2;  // Verifica vitória de X e contagem de jogadas
     if (oWon) return (oCount >= xCount) ? 2 : -2;  // Verifica vitória de O e contagem de jogadas
-    if (oWon) return 2;           // O venceu
     if (!hasEmptySpace) return 0; // Empate
     return -1;                    // Jogo em andamento
 }

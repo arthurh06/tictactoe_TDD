@@ -2,7 +2,7 @@
 #include "catch.hpp"
 #include "velha.hpp"
 
-// Teste inicial: jogo vazio deve retornar UNDEFINED (-1)
+
 TEST_CASE("Jogo vazio retorna indefinido", "[CheckTicTacToeResult]") {
     int hash[3][3] = {
         {0, 0, 0},
@@ -13,153 +13,124 @@ TEST_CASE("Jogo vazio retorna indefinido", "[CheckTicTacToeResult]") {
     REQUIRE(CheckTicTacToeResult(hash) == GameResult::UNDEFINED);
 }
 
-TEST_CASE("Vitória de X na primeira linha") {
+TEST_CASE("Vitória de X por linhas") {
     int hash[3][3] = {
         {1, 1, 1},
         {0, 2, 0},
         {2, 0, 2}
     };
-
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
-}
-
-TEST_CASE("Vitória de X na segunda linha") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {0, 2, 0},
         {1, 1, 1},
         {2, 0, 2}
     };
-
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
-}
-
-TEST_CASE("Vitória de X na terceira linha") {
-    int hash[3][3] = {
+    int hash3[3][3] = {
         {0, 2, 0},
         {2, 0, 2},
         {1, 1, 1}
     };
-
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
+    REQUIRE(CheckTicTacToeResult(hash) == X_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == X_WIN);
+    REQUIRE(CheckTicTacToeResult(hash3) == X_WIN);
 }
 
-
-TEST_CASE("Vitória de O na primeira linha") {
+TEST_CASE("Vitória de O por linhas") {
     int hash[3][3] = {
         {2, 2, 2},
         {1, 0, 1},
         {0, 1, 0}
     };
-
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
-}
-
-TEST_CASE("Vitória de O na segunda linha") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {1, 0, 0},
         {2, 2, 2},
         {0, 1, 1}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
-}
-
-TEST_CASE("Vitória de O na terceira linha") {
-    int hash[3][3] = {
+    int hash3[3][3] = {
         {1, 0, 0},
         {0, 1, 0},
         {2, 2, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
+
+    REQUIRE(CheckTicTacToeResult(hash) == O_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == O_WIN);
+    REQUIRE(CheckTicTacToeResult(hash3) == O_WIN);
 }
 
-TEST_CASE("Vitória de X na primeira coluna") {
+TEST_CASE("Vitória de X por colunas") {
     int hash[3][3] = {
         {1, 0, 2},
         {1, 2, 0},
         {1, 0, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
-}
-
-TEST_CASE("Vitória de X na segunda coluna") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {0, 1, 0},
         {2, 1, 0},
         {0, 1, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
-}
-
-TEST_CASE("Vitória de X na terceira coluna") {
-    int hash[3][3] = {
+    int hash3[3][3] = {
         {0, 2, 1},
         {2, 0, 1},
         {0, 0, 1}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
+
+    REQUIRE(CheckTicTacToeResult(hash) == X_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == X_WIN);
+    REQUIRE(CheckTicTacToeResult(hash3) == X_WIN);
 }
 
-TEST_CASE("Vitória de O na primeira coluna") {
+TEST_CASE("Vitória de O por colunas") {
     int hash[3][3] = {
         {2, 0, 1},
         {2, 1, 0},
         {2, 0, 1}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
-}
-
-TEST_CASE("Vitória de O na segunda coluna") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {1, 2, 0},
         {0, 2, 1},
         {1, 2, 0}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
-}
-
-TEST_CASE("Vitória de O na terceira coluna") {
-    int hash[3][3] = {
+    int hash3[3][3] = {
         {0, 1, 2},
         {1, 0, 2},
         {0, 1, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
+
+    REQUIRE(CheckTicTacToeResult(hash) == O_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == O_WIN);
+    REQUIRE(CheckTicTacToeResult(hash3) == O_WIN);
+  
 }
 
-TEST_CASE("Vitória de X na diagonal principal") {
-    int hash[3][3] = {
+TEST_CASE("Vitória de X por diagonais") {
+    int hashMain[3][3] = {
         {1, 0, 2},
         {0, 1, 0},
         {2, 0, 1}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
-}
-
-TEST_CASE("Vitória de X na diagonal secundária") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {0, 2, 1},
         {0, 1, 0},
         {1, 0, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 1);
+
+    REQUIRE(CheckTicTacToeResult(hashMain) == X_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == X_WIN);
 }
 
-TEST_CASE("Vitória de O na diagonal principal") {
-    int hash[3][3] = {
+TEST_CASE("Vitória de O por diagonais") {
+    int hashMain[3][3] = {
         {2, 1, 0},
         {1, 2, 0},
         {0, 0, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
-}
-
-TEST_CASE("Vitória de O na diagonal secundária") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {1, 0, 2},
         {0, 2, 0},
         {2, 0, 1}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 2);
+
+    REQUIRE(CheckTicTacToeResult(hashMain) == O_WIN);
+    REQUIRE(CheckTicTacToeResult(hash2) == O_WIN);
 }
 
 TEST_CASE("Jogo empatado", "[CheckTicTacToeResult]") {
@@ -169,7 +140,7 @@ TEST_CASE("Jogo empatado", "[CheckTicTacToeResult]") {
         {1, 1, 2},
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == 0);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::TIE);
 }
 
 TEST_CASE("Jogo indefinido", "[CheckTicTacToeResult]") {
@@ -178,26 +149,20 @@ TEST_CASE("Jogo indefinido", "[CheckTicTacToeResult]") {
         {0, 2, 0},
         {1, 0, 0},
     };
-    
-    REQUIRE(CheckTicTacToeResult(hash) == -1);
-}
-
-TEST_CASE("Jogo indefinido2", "[CheckTicTacToeResult]") {
-    int hash[3][3] = {
+    int hash2[3][3] = {
         {1, 2, 1},
         {2, 1, 0},
         {2, 1, 2}
     };
-    REQUIRE(CheckTicTacToeResult(hash) == -1);
-}
-
-TEST_CASE("Jogo indefinido3", "[CheckTicTacToeResult]") {
-    int hash[3][3] = {
+    int hash3[3][3] = {
         {1, 2, 1},
         {1, 1, 0},
         {2, 0, 2},
     };
-    REQUIRE(CheckTicTacToeResult(hash) == -1);
+
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::UNDEFINED);
+    REQUIRE(CheckTicTacToeResult(hash2) == GameResult::UNDEFINED);
+    REQUIRE(CheckTicTacToeResult(hash3) == GameResult::UNDEFINED);
 }
 
 TEST_CASE("Jogo com mais de um vencedor","[CheckTicTacToeResult]") {
@@ -207,7 +172,7 @@ TEST_CASE("Jogo com mais de um vencedor","[CheckTicTacToeResult]") {
         {0, 0, 0},
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
 
 TEST_CASE("Todas as posições são X", "[CheckTicTacToeResult]") {
@@ -217,17 +182,17 @@ TEST_CASE("Todas as posições são X", "[CheckTicTacToeResult]") {
         {1, 1, 1}
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
 
-TEST_CASE("Todas as posições são 0", "[CheckTicTacToeResult]") {
+TEST_CASE("Todas as posições são O", "[CheckTicTacToeResult]") {
     int hash[3][3] = {
         {2, 2, 2},
         {2, 2, 2},
         {2, 2, 2}
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
 
 TEST_CASE("Perdedor O joga mais vezes que o vencedor X", "[CheckTicTacToeResult]") {
@@ -237,7 +202,7 @@ TEST_CASE("Perdedor O joga mais vezes que o vencedor X", "[CheckTicTacToeResult]
         {2, 2, 1},
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
 
 TEST_CASE("Perdedor X joga mais vezes que o vencedor O", "[CheckTicTacToeResult]") {
@@ -247,7 +212,7 @@ TEST_CASE("Perdedor X joga mais vezes que o vencedor O", "[CheckTicTacToeResult]
         {1, 1, 2},
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
 
 TEST_CASE("Quantidade de jogadas de X invalida", "[CheckTicTacToeResult]") {
@@ -257,5 +222,5 @@ TEST_CASE("Quantidade de jogadas de X invalida", "[CheckTicTacToeResult]") {
         {0, 1, 0},
     };
 
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash) == GameResult::IMPOSSIBLE);
 }
