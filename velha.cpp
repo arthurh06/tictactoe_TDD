@@ -52,7 +52,7 @@ int CheckTicTacToeResult(int hash[3][3]) {
     if (xWon && oWon) return -2;  // Ambos venceram (inválido)
     if (xCount == 9) return -2;   // Todas as posições = X
     if (oCount == 9) return -2;   // Todas as posições = O
-    if (xWon) return 1;           // X venceu
+    if (xWon) return (xCount >= oCount) ? 1 : -2;  // Verifica vitória e contagem de jogadas
     if (oWon) return 2;           // O venceu
     if (!hasEmptySpace) return 0; // Empate
     return -1;                    // Jogo em andamento

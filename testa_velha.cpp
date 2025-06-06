@@ -230,7 +230,7 @@ TEST_CASE("Todas as posições são 0", "[CheckTicTacToeResult]") {
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 }
 
-TEST_CASE("Perdedor joga mais vezes que o vencedor", "[CheckTicTacToeResult]") {
+TEST_CASE("Perdedor O joga mais vezes que o vencedor X", "[CheckTicTacToeResult]") {
     int hash[3][3] = {
         {1, 2, 0},
         {2, 1, 0},
@@ -239,3 +239,4 @@ TEST_CASE("Perdedor joga mais vezes que o vencedor", "[CheckTicTacToeResult]") {
 
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 }
+
