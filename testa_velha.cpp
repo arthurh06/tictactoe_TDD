@@ -162,3 +162,12 @@ TEST_CASE("Vitória de O na diagonal secundária") {
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
 
+TEST_CASE("Jogo empatado", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {1, 2, 1},
+        {2, 2, 1},
+        {1, 1, 2},
+    };
+
+    REQUIRE(CheckTicTacToeResult(hash) == 0);
+}
