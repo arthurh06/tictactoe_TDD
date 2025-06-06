@@ -2,6 +2,7 @@
 
 int CheckTicTacToeResult(int hash[3][3]) {
     bool xWon = false, oWon = false;
+    int xCount = 0;
 
     // Verifica linhas
     for (int i = 0; i < 3; i++) {
@@ -29,6 +30,12 @@ int CheckTicTacToeResult(int hash[3][3]) {
         else if (hash[0][2] == 2) oWon = true;
     }
 
+    for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        if (hash[i][j] == 1) xCount++;
+    }    
+    }
+
     // Verifica empate ou jogo em andamento
     bool hasEmptySpace = false;
     for (int i = 0; i < 3 && !hasEmptySpace; i++) {
@@ -41,6 +48,7 @@ int CheckTicTacToeResult(int hash[3][3]) {
     }
 
     if (xWon && oWon) return -2;  // Ambos venceram (inválido)
+    if (xCount == 9) return -2;
     if (xWon) return 1;           // X venceu
     if (oWon) return 2;           // O venceu
     if (!hasEmptySpace) return 0; // Empate
