@@ -181,3 +181,21 @@ TEST_CASE("Jogo indefinido", "[CheckTicTacToeResult]") {
     
     REQUIRE(CheckTicTacToeResult(hash) == -1);
 }
+
+TEST_CASE("Jogo indefinido2", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {1, 2, 1},
+        {2, 1, 0},
+        {2, 1, 2}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == -1);
+}
+
+TEST_CASE("Jogo indefinido3", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {1, 2, 1},
+        {1, 1, 0},
+        {2, 0, 2},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == -1);
+}
