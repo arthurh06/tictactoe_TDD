@@ -125,3 +125,21 @@ TEST_CASE("Vitória de O na terceira coluna") {
     };
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
+
+TEST_CASE("Vitória de X na diagonal principal") {
+    int hash[3][3] = {
+        {1, 0, 2},
+        {0, 1, 0},
+        {2, 0, 1}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
+}
+
+TEST_CASE("Vitória de X na diagonal secundária") {
+    int hash[3][3] = {
+        {0, 2, 1},
+        {0, 1, 0},
+        {1, 0, 2}
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
+}
