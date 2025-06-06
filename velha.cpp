@@ -31,6 +31,7 @@ int CheckTicTacToeResult(int hash[3][3]) {
         else if (hash[0][2] == 2) oWon = true;
     }
 
+    // Contagem de jogadas
     for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
         if (hash[i][j] == 1) xCount++;
@@ -38,6 +39,9 @@ int CheckTicTacToeResult(int hash[3][3]) {
     }    
     }
 
+    if ((xCount - oCount > 1) || (oCount - xCount > 1)) {
+        return -2; // Jogo impossível (diferença de peças > 1)
+    }
     // Verifica empate ou jogo em andamento
     bool hasEmptySpace = false;
     for (int i = 0; i < 3 && !hasEmptySpace; i++) {
