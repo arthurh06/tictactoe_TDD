@@ -171,3 +171,13 @@ TEST_CASE("Jogo empatado", "[CheckTicTacToeResult]") {
 
     REQUIRE(CheckTicTacToeResult(hash) == 0);
 }
+
+TEST_CASE("Jogo indefinido", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {1, 1, 2},
+        {0, 2, 0},
+        {1, 0, 0},
+    };
+    
+    REQUIRE(CheckTicTacToeResult(hash) == -1);
+}
